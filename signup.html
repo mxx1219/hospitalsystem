@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+ <head>
+    <meta charset="utf-8">
+    <title>Hospital System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+	
+	<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Bootstrap core JS -->
+    <script src="./dist/js/bootstrap.min.js" ></script>
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+  </head>
+	<body>
+		<div class="container">
+			<form class='from-' role='form'>
+			<h2 class="form-signup-heading">Light Hospital Register system</h2>
+			<div class="dropdown" id="dropdown">
+				<select class="btn from-control" id="selectmenu" onchange="changeIdentity()">
+					<option>Choose your identity...</option>
+					<option>Patient</option>
+					<option>Doctor</option>
+					<option>Finance</option>
+					<option>Nurse</option>
+				</select>
+			</div>
+        <input type="email" class="form-control" placeholder="Your Email address..." required autofocus>
+        <input type="password" class="form-control" placeholder="Enter your password..." required>
+		<input type="password" class="form-control" placeholder="Enter your password again..." required>
+		<input type="text" class="form-control" id="patientNo" placeholder="Health Number(Patient required)" required>
+		<input type="text" class="form-control" id="employeeNo" placeholder="Employee Number(Employee required)" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" id="signinbtn" onclick="check();">Register</button>
+			</form>
+			<script>
+			function changeIdentity()
+			{
+				identity = document.getElementById("selectmenu");
+				if(identity.value=='Patient')
+				{
+					$("#patientNo").attr("required","required");
+					$("#employeeNo").removeAttr("required");
+				}
+				else if(identity.value=='Choose your identity...')
+				{
+					$("#patientNo").attr("required","required");
+					$("#employeeNo").attr("required","required");
+				}
+				else
+				{
+					$("#employeeNo").attr("required","required");
+					$("#patientNo").removeAttr("required");
+				}
+			}
+			</script>
+		</div> <!--container-->
+	</body>
+</html>
